@@ -1,0 +1,25 @@
+#! /bin/sh
+PIDFILE="/var/run/matrix_bug_script.pid"
+
+
+	sleep 1
+ echo -n "Stopping matrix bug script"
+    start-stop-daemon --stop --quiet --pidfile /var/run/matrix_bug_script.pid
+ echo "."
+
+	sleep 1
+    echo -n "Stopping Matrix GUI application"
+    start-stop-daemon --stop --quiet --pidfile /var/run/matrix-gui-e.pid
+    echo "."
+
+	sleep 1
+	ts_calibrate
+
+	sleep 3
+	
+	echo -n "Starting matrix-bug application"
+/usr/sbin/matrix-bug-script &
+ps | grep [m]atrix-bug-script | head -c 5 | tail -c 4 > $PIDFILE
+
+    
+exit 0

@@ -1,0 +1,8 @@
+#!/bin/sh
+PIDFILE="/var/run/matrix_bug_script.pid"
+matrix_bug="/usr/sbin/matrix-bug-script"
+
+ echo -n "Starting matrix-bug application"
+    start-stop-daemon --start --quiet --background --exec $matrix_bug -- 
+	pidof ${matrix_bug} > $PIDFILE
+    echo "."

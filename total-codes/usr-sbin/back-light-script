@@ -1,0 +1,26 @@
+
+
+x=""	
+
+kill $(pidof back)
+
+sleep 1
+
+if [ ! $1 ]; then
+	echo "Usage: enter number of minites as parameter...."
+	exit 1
+fi
+
+if [ $1 -gt 0 -a $1 -lt 2 ]; then
+	echo "060" > /usr/lib/test.txt
+else
+	x=`expr $1 \* 60`
+	echo "$x" > /usr/lib/test.txt
+fi
+
+back &
+
+exit 0
+
+
+

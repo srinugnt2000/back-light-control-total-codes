@@ -1,0 +1,27 @@
+
+
+x=""	
+
+kill $(pidof back)
+
+sleep 1
+
+if [ -z $1 ]; then
+	echo "Usage: enter number of minites as parameter...."
+	exit 0
+fi
+
+if [ $1 -eq 0 ]; then
+	echo "stoped back light control"
+	exit 0
+fi
+
+	echo "$1" > /usr/lib/test.txt
+
+
+back &
+
+exit 0
+
+
+

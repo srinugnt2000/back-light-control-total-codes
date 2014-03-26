@@ -1,0 +1,14 @@
+#!/bin/sh
+PIDFILE="/var/run/back_light_control.pid"
+back_light="/usr/sbin/back-light-control"
+
+sleep 10
+
+/usr/sbin/Battery &
+
+ echo -n "Starting back light control application"
+    start-stop-daemon --start --quiet --background --exec $back_light -- 
+	pidof ${back_light} > $PIDFILE1
+    echo "."
+
+exit 0

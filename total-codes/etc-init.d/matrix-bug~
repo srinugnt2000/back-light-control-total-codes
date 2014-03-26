@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PIDFILE="/var/run/matrix_bug_script.pid"
+
+
+echo -n "Starting matrix-bug application"
+/usr/sbin/matrix-bug-script &
+ps | grep [m]atrix-bug-script | head -c 5 | tail -c 4 > $PIDFILE
+
+exit 0
+

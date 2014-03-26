@@ -1,0 +1,2 @@
+
+kill $(pidof testKB_evm.dat)
